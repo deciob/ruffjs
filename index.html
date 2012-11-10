@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ruffjs</title>
+  <meta name="description" content="ruffjs">
+  <meta name="author" content="deciob">
+  <link rel="stylesheet" href="js/vendor/leaflet/dist/leaflet.css">
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+  <div id="map" style="height: 400px;"></div>
+
+  <script src="data/sample_points.js"></script>
+  <script src="js/vendor/require-2.0.6.js"></script>
+  <script>
+      requirejs.config({
+      // The path where your JavaScripts are located
+      baseUrl: 'js/',
+      // Specify the paths of vendor libraries
+      paths: {
+        domReady: 'vendor/domReady-2.0.1',
+        func: 'vendor/horn/func',
+        dom: 'vendor/horn/dom',
+        horn: 'vendor/horn/horn',
+        asevented: 'vendor/asevented-0.3.3',
+        nut: 'vendor/hornjs/nut',
+        leaflet: 'vendor/leaflet/dist/leaflet-src'
+      },
+      // Underscore and Backbone are not AMD-capable per default,
+      // so we need to use the AMD wrapping of RequireJS
+      shim: {
+        leaflet: {
+          exports: 'L'
+        },
+        asevented: {
+          exports: 'asEvented'
+        }
+      }
+      // For easier development, disable browser caching
+      // Of course, this should be removed in a production environment
+      , urlArgs: 'bust=' +  (new Date()).getTime()
+    });
+
+    // Bootstrap the application
+    require(['domReady!', 'ruff', 'mapper'], function (doc, Ruff, mapper) {
+
+      //console.debug('bootstrap', Ruff, Mapper);
+      var map = mapper.initMap(),
+          base_layer = mapper.initBaseLayer(map),
+          points = mapper.addGeoJSON(map, sample_points);
+
+    //console.log(points);
+
+    });
+  </script>
+</body>
+</html>
