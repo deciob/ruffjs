@@ -1,25 +1,25 @@
 ruffjs
 ======
 
-* A Finite State Machine for Leaflet zoom events.
+# A Finite State Machine for Leaflet zoom events.
 
-** State variables:
+## State variables:
 
-prev_zoom
-current_zoom
-prev_geo_state
-current_geo_state
-???
+* prev_zoom
+* current_zoom
+* prev_geo_state
+* current_geo_state
+* ???
 
-** Events (these are leaflet events):
+## Events (these are leaflet events):
 
-zoomstart
-zoomend
-???
+* zoomstart
+* zoomend
+* ???
 
-** States:
+## States:
 
-transition:open -> transition has started and callbacks are fired
-transition:closed -> transition has started and callbacks have ended
-static:open -> the transition has ended and callbacks are fired
-static:closed -> the transition has ended and callbacks have ended
+* transition:open -> transition has started and callbacks are fired
+* transition:closed -> transition has started and callbacks have ended
+* static:open -> the transition has ended and callbacks are fired
+* static:closed -> the transition has ended and callbacks have ended
